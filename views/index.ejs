@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+<body>
+
+    <div class="weather-container">
+        <h1>Welcome to the Weather App</h1>
+    
+        <form action="/submit-city" method="POST">
+
+            <label for="location">Enter City Name:</label>
+            <input type="text" id="location" name="location" required> 
+
+            <button type="submit">Get Weather Now!</button>
+
+        </form>
+
+        <!-- Conditionally display error data and weather data -->
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <% if (weatherData) { %>
+            <div class="weather-details">
+                <h2>Weather Details for <%= weatherData[0].localizedName %>:</h2>
+                <p id="temperature">
+                    Temperature: 
+                    <span id="temp-value-celsius" style="display: none;"><%= weatherData[0].Temperature.Metric.Value %>°C</span> 
+                    <span id="temp-value-fahrenheit"><%= weatherData[0].Temperature.Imperial.Value %>°F</span>
+                </p>
+                <p>Weather: <%= weatherData[0].WeatherText %></p>
+                <button id="toggle-temp-btn">Toggle Temperature (°F / °C)</button>
+            </div>
+        <% } %>
+
+    </div>
+
+    <script>
+        // Function to toggle temperature between Fahrenheit and Celsius
+        document.getElementById('toggle-temp-btn')?.addEventListener('click', () => {
+            const tempValueCelsius = document.getElementById('temp-value-celsius');
+            const tempValueFahrenheit = document.getElementById('temp-value-fahrenheit');
+            const toggleButton = document.getElementById('toggle-temp-btn');
+
+            // Toggle visibility of Celsius and Fahrenheit values
+            if (tempValueCelsius.style.display === "none") {
+                tempValueCelsius.style.display = "inline";
+                tempValueFahrenheit.style.display = "none";
+            } else {
+                tempValueCelsius.style.display = "none";
+                tempValueFahrenheit.style.display = "inline";
+            }
+        });
+    </script>
+
+</body>
+</html>
