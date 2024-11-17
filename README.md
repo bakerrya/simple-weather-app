@@ -27,11 +27,11 @@ Ensure that you have the following installed:
 
    ```bash
    git clone https://github.com/your-username/weather-app.git
-2. **Navigate to the project directory:**:
+2. **Navigate to the project directory**:
    
    ```bash
    cd simple-syllabus-project
-3. **Install the project dependencies using NPM:**:
+3. **Install the project dependencies using NPM**:
    
    ```bash
    npm install
