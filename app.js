@@ -8,8 +8,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-/* I understand storing API keys in codebase is bad practice.
-   Typically, keys would be stored and accessed from where the app is hosted. */
 const apiKey = "9LCzOKA7Ae7AK7CwJ5AX8sZjr8jc3eTj";
 
 app.get('/', (req, res) => {
@@ -42,7 +40,7 @@ app.post('/submit-city', async (req, res) => {
 // This function uses the current conditions API to fetch weather data for a specific city by providing a location key
 async function getWeatherData(locationKey) {
     try {
-        const response = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`);
+        const response = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}&details=true`);
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);

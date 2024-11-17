@@ -34,6 +34,14 @@
                     <span id="temp-value-fahrenheit"><%= weatherData[0].Temperature.Imperial.Value %>°F</span>
                 </p>
                 <p>Weather: <%= weatherData[0].WeatherText %></p>
+                <p id="wind-speed">
+                    Wind Speed: 
+                    <span id="wind-value-imperial"><%= weatherData[0].Wind.Speed.Imperial.Value %> mph</span>
+                </p>
+                <p id="uv-index">
+                    UV Index: <%= weatherData[0].UVIndex %> (<%= weatherData[0].UVIndexText %>)
+                </p>
+
                 <button id="toggle-temp-btn">Toggle Temperature (°F / °C)</button>
             </div>
         <% } %>
